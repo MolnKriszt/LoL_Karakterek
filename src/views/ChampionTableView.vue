@@ -5,18 +5,21 @@
       <i
         class="bi list-toggle-icon bi-list-nested"
         data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasExample"
+        data-bs-target="#offcanvasTable"
       ></i>
 
       <!-- Offcanvas -->
       <div
         class="offcanvas offcanvas-start"
         tabindex="-1"
-        id="offcanvasExample"
-        aria-labelledby="offcanvasExampleLabel"
-        > 
-        <i class="bi offcanvas-close-bi bi-x-lg text-end p-2" data-bs-dismiss="offcanvas"></i>
-      <div class="offcanvas-header">
+        id="offcanvasTable"
+        aria-labelledby="offcanvasTableLabel"
+      >
+        <div class="d-flex justify-content-between m-2">
+          <i
+            class="bi offcanvas-close-bi bi-x-lg"
+            data-bs-dismiss="offcanvas"
+          ></i>
           <h2>Champions Table</h2>
         </div>
         <div class="offcanvas-body">
@@ -91,7 +94,7 @@
 </template>
 
 <script>
-class Champion{
+class Champion {
   constructor(
     id = null,
     name = null,
@@ -99,13 +102,13 @@ class Champion{
     role = null,
     title = null,
     quote = null
-  ){
-    this.id = id,
-    this.name = name,
-    this.image = image,
-    this.role = role,
-    this.title = title,
-    this.quote = quote
+  ) {
+    (this.id = id),
+      (this.name = name),
+      (this.image = image),
+      (this.role = role),
+      (this.title = title),
+      (this.quote = quote);
   }
 }
 export default {
@@ -116,12 +119,12 @@ export default {
       selectedChampion: new Champion(),
     };
   },
-  watch:{
-    filteredChampions(data){
-      this.selectedChampion = data[0]
-    }
+  watch: {
+    filteredChampions(data) {
+      this.selectedChampion = data[0];
+    },
   },
-  mounted(){
+  mounted() {
     if (this.filteredChampions.length > 0) {
       this.selectedChampion = this.filteredChampions[0];
     }
@@ -155,12 +158,12 @@ export default {
 </script>
 
 <style scoped>
-.offcanvas-close-bi{
+.offcanvas-close-bi {
   font-size: x-large;
   color: var(--text-black-700);
 }
 
-.offcanvas-close-bi:hover{
+.offcanvas-close-bi:hover {
   transition: ease 0.3s;
   color: var(--text-color);
   cursor: pointer;

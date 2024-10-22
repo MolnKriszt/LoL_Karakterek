@@ -22,7 +22,6 @@ onMounted(() => {
 });
 </script>
 
-
 <template>
   <div class="container-fluid p-0">
     <nav class="d-flex justify-content-between align-items-center">
@@ -78,16 +77,21 @@ onMounted(() => {
       <!-- Kereső -->
 
       <div class="d-flex align-items-center pb-3 pe-3" role="search">
-        <i class="bi filter-bi bi-funnel" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFilter"></i>
-
+        
         <input
-          v-if="$route.path != '/'"
-          class="form-control ms-2 me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-          v-model="searchWordInput"
+        v-if="$route.path != '/'"
+        class="form-control me-4"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+        v-model="searchWordInput"
         />
+
+        <i
+          class="bi filter-bi bi-funnel"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasFilter"
+        ></i>
       </div>
     </nav>
 
@@ -103,36 +107,15 @@ onMounted(() => {
     tabindex="-1"
     id="offcanvasFilter"
     aria-labelledby="offcanvasFilterLabel"
-  >
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasFilterLabel">Offcanvas</h5>
-      <button
-        type="button"
-        class="btn-close"
+  >  
+  <div class="d-flex justify-content-between m-2">
+      <i
+        class="bi offcanvas-close-bi bi-x-lg text-start"
         data-bs-dismiss="offcanvas"
-        aria-label="Close"
-      ></button>
+      ></i>
+      <h2 class="offcanvas-title" id="offcanvasFilterLabel">Filter</h2>
     </div>
-    <div class="offcanvas-body">
-      <div>
-        Some text as placeholder. In real life you can have the elements you
-        have chosen. Like, text, images, lists, etc.
-      </div>
-      <div class="dropdown mt-3">
-        <button
-          class="btn btn-secondary dropdown-toggle"
-          type="button"
-          data-bs-toggle="dropdown"
-        >
-          Dropdown button
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-      </div>
-    </div>
+    <div class="offcanvas-body"></div>
   </div>
 </template>
 
@@ -205,6 +188,21 @@ export default {
 </script>
 
 <style>
+.offcanvas-close-bi {
+  font-size: x-large;
+  color: var(--text-black-700);
+}
+
+.offcanvas-close-bi:hover {
+  transition: ease 0.3s;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.offcanvas {
+  background: var(--bg-black-50) !important;
+}
+
 .filter-bi {
   margin-right: 10px;
   font-size: xx-large;
