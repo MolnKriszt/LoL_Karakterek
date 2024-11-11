@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div v-if="filteredChampions && filteredChampions.length > 0" class="row">
     <!-- Gomb -->
     <div class="list-toggle-button-div">
       <i
@@ -91,7 +91,13 @@
       </div>
     </div>
   </div>
+
+  <!-- Ha nincs bajnok -->
+  <div v-if="filteredChampions === null || filteredChampions.length === 0">
+    <p class="no-champion-text">Nincs ilyen hős az adatbázisban</p>
+  </div>
 </template>
+
 
 <script>
 class Champion {
@@ -158,6 +164,14 @@ export default {
 </script>
 
 <style scoped>
+.no-champion-text {
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--text-color);
+  margin-top: 50px;
+  font-weight: bold;
+}
+
 .offcanvas-close-bi {
   font-size: x-large;
   color: var(--text-black-700);
